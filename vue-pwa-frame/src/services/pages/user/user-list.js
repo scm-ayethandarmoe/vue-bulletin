@@ -5,7 +5,7 @@ export default {
       postInfo: null,
       dialogTitle: "",
       dialog: false,
-      searchText: '',
+      searchText: "",
       isDeleteDialog: false,
       headerList: [
         {
@@ -40,7 +40,6 @@ export default {
       phone: "",
       dob: "",
       createduser: "",
-
     };
   },
   computed: {
@@ -53,9 +52,9 @@ export default {
       }
     },
     createduserName() {
-      let userlist =  this.userList;
-      return this.userList.map(function (user) {
-        var createdUser = userlist.find(function (user_name) {
+      let userlist = this.userList;
+      return this.userList.map(function(user) {
+        var createdUser = userlist.find(function(user_name) {
           return user.created_user_id == user_name.id;
         });
         user["created_user"] = createdUser.name;
@@ -64,7 +63,7 @@ export default {
     },
   },
   beforeMount() {
-      this.$axios
+    this.$axios
       .get("/user/list")
       .then((response) => {
         this.userList = response.data.user_list;
@@ -73,7 +72,7 @@ export default {
       .catch((err) => {
         console.log(err);
       });
-   
+
     this.$axios
       .get("/post/list")
       .then((response) => {
@@ -100,20 +99,19 @@ export default {
     },
     /**
      * if click user name show user detail
-     * @param {*} id 
+     * @param {*} id
      */
     detailUser(id) {
-     this.dialog = true;
-     let result = this.userList.find(userdetail=> {
-      return userdetail.id == id;
-     })
-    this.name = result.name,
-    this.email = result.email,
-    this.address = result.address,
-    this.phone = result.phone,
-    this.dob = result.dob,
-    this.createduser = result.created_user
-    
-     },
+      this.dialog = true;
+      let result = this.userList.find((userdetail) => {
+        return userdetail.id == id;
+      });
+      (this.name = result.name),
+        (this.email = result.email),
+        (this.address = result.address),
+        (this.phone = result.phone),
+        (this.dob = result.dob),
+        (this.createduser = result.created_user);
+    },
   },
 };

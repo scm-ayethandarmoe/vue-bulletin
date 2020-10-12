@@ -3,16 +3,16 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      title : "",
-      description : "",
-    }
+      title: "",
+      description: "",
+    };
   },
   computed: {
-    ...mapGetters(["postTitle" , "postDescription"]),
+    ...mapGetters(["postTitle", "postDescription"]),
   },
   methods: {
-   confirmPost() {
-     return this.$router.push({ name: "post-list"});
-   }
-  }
-}
+    confirmPost() {
+      return this.$router.push({ name: "post-list" });
+    },
+  },
+};

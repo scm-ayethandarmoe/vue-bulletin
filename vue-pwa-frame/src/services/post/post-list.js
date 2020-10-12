@@ -33,12 +33,12 @@ export default {
       userList: [],
       showuserList: [],
       showList: [],
-      title : "",
-      description : "",
+      title: "",
+      description: "",
       postcreate: "",
     };
   },
- 
+
   computed: {
     ...mapGetters(["isLoggedIn"]),
     headers() {
@@ -50,14 +50,14 @@ export default {
     },
     postUser() {
       let userList = this.userList;
-      return this.postList.map(function (post) {
-        var createdUser = userList.find(function (user) {
+      return this.postList.map(function(post) {
+        var createdUser = userList.find(function(user) {
           return post.created_user_id == user.id;
         });
         post["created_user"] = createdUser.name;
         return post;
       });
-    }
+    },
   },
   async beforeMount() {
     await this.$axios
@@ -69,7 +69,7 @@ export default {
       .catch((err) => {
         console.log(err);
       });
-   
+
     await this.$axios
       .get("/post/list")
       .then((response) => {
@@ -96,15 +96,15 @@ export default {
     },
     postDetail(id) {
       this.dialog = true;
-      let detailpost = this.postList.find(post=> {
-        return post.id == id
-      })
-      this.title = detailpost.title,
-      this.description = detailpost.description,
-      this.postcreate = detailpost.created_user
+      let detailpost = this.postList.find((post) => {
+        return post.id == id;
+      });
+      (this.title = detailpost.title),
+        (this.description = detailpost.description),
+        (this.postcreate = detailpost.created_user);
     },
     postCreate() {
-      return this.$router.push({ path: "/create/post"})
-    }
+      return this.$router.push({ path: "/create/post" });
+    },
   },
 };

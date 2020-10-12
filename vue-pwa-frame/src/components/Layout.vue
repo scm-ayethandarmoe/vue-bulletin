@@ -7,8 +7,7 @@
             <v-toolbar-title class="title">
               <span>{{ title }}</span>
             </v-toolbar-title>
-            <div class="route-links">
-            </div>
+            <div class="route-links"></div>
             <v-spacer></v-spacer>
             <div class="route-links">
               <v-menu offset-y v-if="isLoggedIn">
@@ -43,7 +42,5 @@
     </v-card>
   </v-app>
 </template>
-<script src="../services/components/layout.js">
-</script>
-<style scoped src="../assets/css/components/layout.css">
-</style>
+<script src="../services/components/layout.js"></script>
+<style scoped src="../assets/css/components/layout.css"></style>
